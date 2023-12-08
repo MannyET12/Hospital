@@ -1,0 +1,38 @@
+﻿.card-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    width:100%;
+    height:50%;
+    align-items:center;
+}
+
+.dashboard-row{
+    display:flex;
+    margin:20px;
+}
+
+.d-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 210px;
+    height: 240px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color:darkolivegreen;
+    border-radius:10px;
+    margin-right:10px;
+}
+
+.d-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.dashboard-card{
+    
+}
+
+.card-info{
+    display:flex;
+    justify-content:center;
+}

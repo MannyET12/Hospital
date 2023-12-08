@@ -15,8 +15,15 @@ html {
 html {
   position: relative;
   min-height: 100%;
+  color:white;
 }
 
 body {
   margin-bottom: 60px;
+  background-color:darkgrey;
+  color:white;
+}
+
+.footer.border-top{
+    color:white;
 }
