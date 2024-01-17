@@ -1,5 +1,6 @@
-﻿:root{
-    --nav-bg: black;
+﻿:root {
+    --nav-bg: #7f8a99;
+    --body-bg: darkgrey;
 }
 
 .container {
@@ -8,30 +9,102 @@
     align-items: flex-start;
     margin: 0;
     max-width: 100%;
+    gap: 2rem;
+    padding: 0;
 }
 
-.sidebar-container{
-    background-color:var(--nav-bg);
-    display:flex;
-    flex-direction:column;
-    width:200px;
-}
-main{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-content:center;
-    width:100%;
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    min-height: 200vh;
+    height: 100%;
 }
 
-.sideba-button{
-
+.sidebar-content {
+    background-color: var(--nav-bg);
+    top: 0;
+    max-height: 100svh;
+    position: sticky;
+    flex: 1;
 }
 
-body{
-    padding-top:0px !important;
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
 }
 
-nav{
-    background-color:var(--nav-bg);
+.sidebar-button {
+}
+
+body {
+    padding-top: 0px !important;
+}
+
+nav.navbar {
+    margin: 0 !important;
+    background-color: var(--bs-heading-color) !important;
+    color: white !important;
+}
+
+.nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-block: 2rem;
+}
+
+    .nav-list li {
+        padding: 1rem 2rem;
+        margin-left: 2rem;
+        border-radius: 50vw 0 0 50vw;
+    }
+
+        .nav-list li.active::before,
+        .nav-list li.active::after {
+            --border-radius:1rem;
+
+
+            content: '';
+            position: absolute;
+            width: var(--border-radius);
+            height: var(--border-radius);
+            right: 0;
+            background: var(--nav-bg);
+        }
+
+        .nav-list li.active::before {
+            top: calc(var(--border-radius) *-1);
+            border-radius: 0 0 100vw 0;
+            box-shadow:5px 5px 0 5px var(--body-bg);
+        }
+
+        .nav-list li.active::after {
+            bottom: calc(var(--border-radius) *-1);
+            border-radius: 0 100vw 0 0;
+            box-shadow: 5px -5px 0 5px var(--body-bg);
+        }
+
+        .nav-list li.active {
+            background-color: var(--body-bg);
+            position: relative;
+        }
+
+    .nav-list a {
+        color: white;
+        text-decoration: none;
+    }
+
+.nav-link {
+    color: white !important;
+}
+
+a.navbar-brand {
+    color: white !important;
 }

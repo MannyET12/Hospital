@@ -25,10 +25,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -38,7 +38,7 @@
     </header>
 
     <div class="container">
-        <div class="sidebar-container" id="sidebar-container">
+        <div class="sidebar-container" id="sidebar">
             <div class="sidebar-button">
                 <div></div>
                 <div></div>
@@ -46,18 +46,18 @@
             </div>
             <div class="sidebar-content">
                 <nav>
-                    <ul class="nav-list">
+                    <ul class="nav-list" id="sidenav-list">
                         <li class="active">
-                            <a asp-controller="OPD" asp-action="Index" aria-current="page">OPD</a>
+                            <a asp-controller="Home" asp-action="Index" aria-current="page" onclick="status(this)">OPD</a>
                         </li>
                         <li>
-                            <a asp-controller="OPD" asp-action="Index">OPD</a>
+                            <a onclick="status(this)">OPD</a>
                         </li>
                         <li>
-                            <a asp-controller="OPD" asp-action="Index">OPD</a>
+                            <a onclick="status(this)">OPD</a>
                         </li>
                         <li>
-                            <a asp-controller="OPD" asp-action="Index">OPD</a>
+                            <a onclick="status(this)">OPD</a>
                         </li>
                     </ul>
                 </nav>
@@ -78,7 +78,9 @@
     <script src="~/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/prism.js" asp-append-version="true"></script>
-        <script src="~/js/custom.js" asp-append-version="true"></script>
+    <script src="~/js/custom.js" asp-append-version="true"></script>
+    <script src="~/js/layout.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
