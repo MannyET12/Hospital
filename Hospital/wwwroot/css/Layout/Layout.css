@@ -1,0 +1,37 @@
+﻿:root{
+    --nav-bg: black;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 0;
+    max-width: 100%;
+}
+
+.sidebar-container{
+    background-color:var(--nav-bg);
+    display:flex;
+    flex-direction:column;
+    width:200px;
+}
+main{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-content:center;
+    width:100%;
+}
+
+.sideba-button{
+
+}
+
+body{
+    padding-top:0px !important;
+}
+
+nav{
+    background-color:var(--nav-bg);
+}

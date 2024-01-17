@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Hospital</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Layout/bootstrap.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Layout/prism-okaidia.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Layout/bootstrap-icons.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Layout/custom.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Layout/Layout.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Hospital.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -31,7 +36,33 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
+        <div class="sidebar-container" id="sidebar-container">
+            <div class="sidebar-button">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="sidebar-content">
+                <nav>
+                    <ul class="nav-list">
+                        <li class="active">
+                            <a asp-controller="OPD" asp-action="Index" aria-current="page">OPD</a>
+                        </li>
+                        <li>
+                            <a asp-controller="OPD" asp-action="Index">OPD</a>
+                        </li>
+                        <li>
+                            <a asp-controller="OPD" asp-action="Index">OPD</a>
+                        </li>
+                        <li>
+                            <a asp-controller="OPD" asp-action="Index">OPD</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -44,7 +75,10 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/prism.js" asp-append-version="true"></script>
+        <script src="~/js/custom.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
