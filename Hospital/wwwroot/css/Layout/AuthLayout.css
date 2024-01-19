@@ -1,0 +1,28 @@
+﻿.auth-section{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-content:center;
+}
+
+.auth-content{
+    
+
+}
+
+.tab-container{
+    display:flex;
+    justify-content:center;
+    align-content:center;
+}
+
+.nav-link.auth-tab{
+    color:black !important;
+}
+
+.auth-column-container{
+    max-width:50%;
+}
+
+.nav-link.active{
+}

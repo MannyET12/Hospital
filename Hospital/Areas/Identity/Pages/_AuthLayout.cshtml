@@ -1,0 +1,52 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/css/Layout/AuthLayout.css" asp-append-version="true" />
+
+
+<div class="tab-container">
+    <div class="auth-column-container">
+        <div class="card login-logout-card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link auth-tab" href="/Identity/Account/Login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link auth-tab" href="/Identity/Account/Register">Register</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="auth-section">
+                    <div class="col-10 my-4">
+                        @RenderBody()
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section scripts{
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script>
+        $(function () {
+            const currentPage = location.pathname;
+            console.log("page",currentPage);
+
+            $('.nav-tabs li a').each(function () {
+                const $this = $(this);
+                console.log("page", this);
+                if(currentPage.toLocaleLowerCase().indexOf($this.attr('href').toLowerCase()) !== -1){
+                    $this.addClass('active');
+                }
+            })
+        })
+    </script>
+
+}
