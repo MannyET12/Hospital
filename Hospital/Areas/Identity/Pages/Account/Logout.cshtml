@@ -9,8 +9,8 @@
     @{
         if (User.Identity?.IsAuthenticated ?? false)
         {
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
+            <form id="logout-form" class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit" class="nav-link btn btn-link text-dark" onclick="submitForm()">Click here to Logout</button>
             </form>
         }
         else
@@ -19,3 +19,17 @@
         }
     }
 </header>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function submitForm() {
+            // Manually trigger the form submission
+            document.getElementById('logout-form').submit();
+        }
+
+
+    </script>
+}

@@ -21,8 +21,20 @@
 }
 
 .auth-column-container{
-    max-width:50%;
+    width:50%;
+    max-width:100%;
+}
+
+.auth-card{
+    width:70%;
 }
 
 .nav-link.active{
+}
+
+.register-name-container {
+    display: flex;
+    flex-direction:row;
+    gap:5px;
+
 }

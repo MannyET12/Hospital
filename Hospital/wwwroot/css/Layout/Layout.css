@@ -3,6 +3,36 @@
     --body-bg: darkgrey;
 }
 
+body {
+    padding-top: 0px !important;
+}
+
+nav.navbar {
+    margin: 0 !important;
+    background-color: var(--bs-heading-color) !important;
+    color: white !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nav-container{
+    display:flex;
+    justify-content:center;
+    align-content:center;
+    justify-items:center;
+    align-items:center;
+    max-width:50%;
+    width:100%;
+}
+
+.nav-account {
+    display: flex;
+    flex-direction: row-reverse !important;
+    max-width: 100%;
+    width: 100%;
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -40,15 +70,7 @@ main {
 .sidebar-button {
 }
 
-body {
-    padding-top: 0px !important;
-}
 
-nav.navbar {
-    margin: 0 !important;
-    background-color: var(--bs-heading-color) !important;
-    color: white !important;
-}
 
 .nav-list {
     margin: 0;
@@ -107,4 +129,5 @@ nav.navbar {
 
 a.navbar-brand {
     color: white !important;
+    width:100%
 }
