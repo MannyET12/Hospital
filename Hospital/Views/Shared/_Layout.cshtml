@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -21,7 +22,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex nav-account">                    
+                <div class="navbar-collapse collapse d-sm-inline-flex nav-account">
                     <partial name="_LoginPartial" />
                 </div>
             </div>
@@ -29,34 +30,42 @@
     </header>
 
     <div class="container">
-        <div class="sidebar-container" id="sidebar">
-            <div class="sidebar-button">
-                <div></div>
-                <div></div>
-                <div></div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="sidebar-container" id="sidebar">
+                <div class="sidebar-button">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="sidebar-content">
+                    <nav>
+                        <ul class="nav-list" id="sidenav-list">
+                            <li class="mainlist-item" id="OPD">
+                                <a onclick="status(this)">OPD</a>
+                            </li>
+                            <li class="mainlist-item" id="Pharmacy">
+                                <a onclick="status(this)">Pharmacy</a>
+                            </li>
+                            <li class="mainlist-item" id="Lab">
+                                <a onclick="status(this)">Lab</a>
+                            </li>
+                            <li class="mainlist-item" id="Patient">
+                                <a onclick="status(this)">Patients</a>
+                            </li>
+                            <li class="mainlist-item" id="Admin">
+                                <a asp-controller="Admin" asp-action="Index" aria-current="page">Admin</a>
+                                <ul class="sublist">
+                                    <li class="sublist-item" id="User">
+                                        <a asp-controller="User" asp-action="Index" aria-current="page">Users</a>
+                                    </li>
+                                </ul>
+                            </li>                           
+                        </ul>
+                    </nav>
+                </div>
             </div>
-            <div class="sidebar-content">
-                <nav>
-                    <ul class="nav-list" id="sidenav-list">
-                        <li class="active">
-                            <a asp-controller="Home" asp-action="Index" aria-current="page" onclick="status(this)">OPD</a>
-                        </li>
-                        <li>
-                            <a onclick="status(this)">OPD</a>
-                        </li>
-                        <li>
-                            <a onclick="status(this)">Lab</a>
-                        </li>
-                        <li>
-                            <a onclick="status(this)">Admin</a>
-                        </li>
-                        <li>
-                            <a onclick="status(this)">Patients</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        }
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

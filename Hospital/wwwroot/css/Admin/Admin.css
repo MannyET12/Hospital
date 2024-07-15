@@ -1,0 +1,39 @@
+﻿.admin-header{
+    display:flex;
+    justify-content:center;
+}
+
+.admin-container{
+    width:100%
+}
+
+.section-container{
+    display:flex;
+    flex-direction:row;
+    width:100%;
+    border:1px red;
+    gap:5px;
+    
+}
+
+.section{
+    width:100%;
+    margin-bottom:5px;
+    display:flex;
+}
+
+.admin-button {
+    background-color: var(--bs-gray-800);
+    color: white;
+    height: 300px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    border: 1px solid var(--bs-gray-700);
+    border-radius: 10px;
+}
+
+a.admin-button{
+    text-decoration:none;
+}

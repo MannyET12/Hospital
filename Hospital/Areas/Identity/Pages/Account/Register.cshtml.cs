@@ -113,6 +113,11 @@ namespace Hospital.Areas.Identity.Pages.Account
 
         public async Task OnGetAsync(string returnUrl = null)
         {
+            if(User.Identity.IsAuthenticated)
+            {
+                Response.Redirect("/");
+            }
+
             ReturnUrl = returnUrl;
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         
@@ -136,6 +141,9 @@ namespace Hospital.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    //set user role.
+                    await _userManager.AddToRoleAsync(user, "staff");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

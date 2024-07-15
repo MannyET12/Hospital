@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Hospital.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Hospital.Data
 {

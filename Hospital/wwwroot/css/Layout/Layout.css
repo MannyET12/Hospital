@@ -16,14 +16,14 @@ nav.navbar {
     justify-content: center;
 }
 
-.nav-container{
-    display:flex;
-    justify-content:center;
-    align-content:center;
-    justify-items:center;
-    align-items:center;
-    max-width:50%;
-    width:100%;
+.nav-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    max-width: 50%;
+    width: 100%;
 }
 
 .nav-account {
@@ -82,17 +82,15 @@ main {
     padding-block: 2rem;
 }
 
-    .nav-list li {
+    .nav-list .mainlist-item {
         padding: 1rem 2rem;
         margin-left: 2rem;
         border-radius: 50vw 0 0 50vw;
     }
 
-        .nav-list li.active::before,
-        .nav-list li.active::after {
-            --border-radius:1rem;
-
-
+        .nav-list .mainlist-item.active::before,
+        .nav-list .mainlist-item.active::after {
+            --border-radius: 1rem;
             content: '';
             position: absolute;
             width: var(--border-radius);
@@ -101,27 +99,43 @@ main {
             background: var(--nav-bg);
         }
 
-        .nav-list li.active::before {
+        .nav-list .mainlist-item.active::before {
             top: calc(var(--border-radius) *-1);
             border-radius: 0 0 100vw 0;
-            box-shadow:5px 5px 0 5px var(--body-bg);
+            box-shadow: 5px 5px 0 5px var(--body-bg);
         }
 
-        .nav-list li.active::after {
+        .nav-list .mainlist-item.active::after {
             bottom: calc(var(--border-radius) *-1);
             border-radius: 0 100vw 0 0;
             box-shadow: 5px -5px 0 5px var(--body-bg);
         }
 
-        .nav-list li.active {
+        .nav-list .mainlist-item.active {
             background-color: var(--body-bg);
             position: relative;
         }
 
-    .nav-list a {
+    .nav-list a,
+    .nav-list {
         color: white;
         text-decoration: none;
     }
+
+.mainlist-item.active .sublist {
+    display: flex;
+    list-style: none;
+}
+
+.sublist {
+    display: none;
+}
+
+.sublist-item a {
+    list-style: none;
+}
+
+
 
 .nav-link {
     color: white !important;
@@ -129,5 +143,5 @@ main {
 
 a.navbar-brand {
     color: white !important;
-    width:100%
+    width: 100%
 }

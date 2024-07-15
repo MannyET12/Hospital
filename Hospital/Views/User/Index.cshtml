@@ -1,0 +1,67 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model Hospital.ViewModels.UserViewModel
+
+@{
+    ViewData["Title"] = "User Page";
+}
+
+<link rel="stylesheet" href="~/css/Admin/Admin.css" asp-append-version="true" />
+
+<html>
+<body>
+    <div class="user-header">
+        <h3>Users</h3>
+    </div>
+    <div class="table-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Staff ID</th>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.users != null)
+                {
+                    @foreach (var user in Model.users)
+                    {
+
+                        <tr>
+                            <td> @user.StaffID</td>
+                            <td> @user.FirstName @user.LastName</td>
+                            @if (user.UserRoles.Count == 0)
+                            {
+                                <td>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @foreach(var role in user.UserRoles)
+                                    {
+                                        @role
+                                    }
+                                </td>
+                            }
+
+
+                            <td>
+                                <a class="action-button" asp-action="Edit" asp-route-id="@user.Id">Edit</a>
+                            </td>
+
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr><td>No Users</td></tr>
+                }
+
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>
