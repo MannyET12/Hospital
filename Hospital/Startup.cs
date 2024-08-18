@@ -36,8 +36,13 @@ namespace YourNamespace
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            //Data Access Layer
+            services.AddScoped<IPDAL, PatientDAL>();
 
             services.Configure<IdentityOptions>(options =>
             {

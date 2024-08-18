@@ -1,0 +1,65 @@
+﻿@model Hospital.ViewModels.PatientViewModel
+
+@{
+    ViewData["Title"] = "Patient Page";
+}
+
+<html>
+<head>
+
+</head>
+<body>
+    <div class="patient-header view-header">
+        <h3>Patients</h3>
+        <a class="button">Add patient </a>
+    </div>
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Patient ID</th>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Appointments</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @if (Model.patients == null)
+                {
+                    <tr>
+                        <td class="empty-table-row">No Patients available</td>
+                    </tr>
+                    <tr><td>test 1</td></tr>
+                    <tr><td>test 2</td></tr>
+                    <tr><td>test 3</td></tr>
+                    <tr><td>test 3</td></tr>
+                    <tr><td>test 5</td></tr>
+
+                }
+                else
+                {
+                    @foreach (var patient in Model.patients)
+                    {
+                        <tr>
+                            <td>@patient.ID</td>
+                            <td>@patient.FirstName @patient.LastName</td>
+                            <td>@patient.DateofBirth</td>
+                            <td>@patient.Gender</td>
+                            <td>@patient.Address</td>
+                            <td>@patient.Email</td>
+                            <td>@patient.Phone</td>
+                            <td>@patient.Appointments</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

@@ -8,7 +8,7 @@ namespace Hospital.Models
         public int ID { get; set; }
         public int AppointmentID { get; set; }
 
-        public Session Session { get; set; }
+        public Patient Patient { get; set; }
 
 
 

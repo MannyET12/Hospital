@@ -1,35 +1,108 @@
-:root{
+:root {
     --background-colour: white;
+    --table-background: #7f8a99;
 }
 
 
 
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
-  color:white;
+    position: relative;
+    min-height: 100%;
+    color: white;
 }
 
 body {
-  margin-bottom: 60px;
-  background-color:darkgrey;
-  color:white;
+    margin-bottom: 60px;
+    background-color: darkgrey;
+    color: white;
 }
 
-.footer.border-top{
+.footer.border-top {
+    color: white;
+}
+
+a.button {
+    text-decoration: none;
+    padding: 10px;
+    cursor:pointer;
+}
+
+    a.button:hover {
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow on hover */
+    }
+
+.button {
+    width: fit-content !important;
+    height: 45px !important;
+    border-radius: 10px;
+    color: white;
+    background-color: cadetblue;
+}
+
+.view-header {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin: 10px 0px 10px 0px;
+}
+
+.table {
+    --bs-table-bg: var(--table-background) !important;
+    --bs-table-color: white ;
+}
+
+.th{
     color:white;
 }
+
+/* table header styles here */
+.table tr:first-child th:first-child {
+
+    border-radius: 10px 0px 0px 0px
+}
+
+.table tr:last-child th:last-child {
+    border-radius: 0px 10px 0px 0px
+}
+
+/* table row styles here */
+.table tr:first-child td:first-child  {
+    border-radius: 10px 0px 0px 0px
+}
+
+.table tr:first-child td:last-child {
+    border-radius: 0px 10px 0px 0px
+}
+
+.table tr:last-child td:first-child  {
+    border-radius: 0px 0px 0px 10px
+}
+
+.table tr:last-child td:last-child {
+    border-radius: 0px 0px 10px 0px
+}
+
+
+.empty-table-row{
+    border-radius:0px 0px 10px 10px !important;
+}
+
+tr:nth-child(even) td {
+    background-color: #f2f2f2;
+    color: black; /* Ensure text is visible against the black background */
+}
+

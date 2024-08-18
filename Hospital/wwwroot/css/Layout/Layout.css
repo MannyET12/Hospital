@@ -65,6 +65,7 @@ main {
     justify-content: center;
     align-content: center;
     width: 100%;
+    margin-right:2rem;
 }
 
 .sidebar-button {
