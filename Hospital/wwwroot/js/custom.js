@@ -99,7 +99,7 @@
   toggleThemeMenu();
 
   // Prevent empty `a` elements or `submit` buttons from navigating away
-  const targets = document.querySelectorAll('[href="#"], [type="submit"]');
+    const targets = document.querySelectorAll('.prevent-navigation[href="#"], .prevent-navigation[type="submit"]');
 
   for (const element of targets) {
     element.addEventListener('click', event => {

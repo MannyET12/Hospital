@@ -45,6 +45,14 @@ a.button {
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow on hover */
     }
 
+button{
+
+}
+
+    button.button:hover {
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow on hover */
+    }
+
 .button {
     width: fit-content !important;
     height: 45px !important;

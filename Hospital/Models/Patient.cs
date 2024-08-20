@@ -13,30 +13,39 @@ namespace Hospital.Models
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
-        [Required]
         [Display(Name = "Middle Name")]
-        public string MiddleName { get; set; }
+        public string? MiddleName { get; set; }
 
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         [Display(Name = "Date of Birth")]
 
-        public DateTime DateofBirth { get; set; }
+        public DateTime? DateofBirth { get; set; }
         [Display(Name = "Address")]
 
         public string Address { get; set; }
         [Display(Name = "Gender")]
 
         public string Gender { get; set; }
+
+        [Display(Name = "Other")]
+        public string GenderOther {  get; set; }
+
         [Display(Name = "Email Address")]
-
         public string Email { get; set; }
+
         [Display(Name = "Phone Number")]
-
-        public string Phone { get; set; }        
+        public int Phone { get; set; }      
+        
         [Display(Name = "Appointments")]
-
         public List<Appointments> Appointments { get; set; }
-    }   
+    }
+    
+    public enum Gender
+    {
+        Male,
+        Female,
+        Other
+    }
 }

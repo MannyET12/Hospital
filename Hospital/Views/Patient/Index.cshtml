@@ -12,6 +12,8 @@
     <div class="patient-header view-header">
         <h3>Patients</h3>
         <a class="button">Add patient </a>
+        <button class="button" type="button" onclick="location.href='@Url.Action("Create", "Patient")'">New Patient</button>
+
     </div>
     <div class="table-container">
         <table class="table">
@@ -29,7 +31,7 @@
 
             </thead>
             <tbody>
-                @if (Model.patients == null)
+                @if (Model.Patients.Count == 0)
                 {
                     <tr>
                         <td class="empty-table-row">No Patients available</td>
@@ -43,7 +45,7 @@
                 }
                 else
                 {
-                    @foreach (var patient in Model.patients)
+                    @foreach (var patient in Model.Patients)
                     {
                         <tr>
                             <td>@patient.ID</td>
@@ -54,6 +56,10 @@
                             <td>@patient.Email</td>
                             <td>@patient.Phone</td>
                             <td>@patient.Appointments</td>
+                            <td class="actions-container">
+                                <a class="button">Edit</a>
+                                <a class="button">Delete</a>
+                            </td>
                         </tr>
                     }
                 }

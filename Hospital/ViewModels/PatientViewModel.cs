@@ -6,18 +6,12 @@ namespace Hospital.ViewModels
 {
     public class PatientViewModel
     {
-        public List<PatientData> patients;
+        public PatientData PatientData { get; set; }
+        public Patient Patient { get; set; }
         public List<Patient> Patients { get; set; }
-    }
+        public List<Appointments> Appointments { get; set; }
 
-    public class PatientListViewModel
-    {
-        public List<PatientViewModel> Patients { get; set; }
-        public string SearchQuery { get; set; } // Example of additional data
-        public int CurrentPage { get; set; }
-        public int TotalPages { get; set; }
-    }
-
+    } 
 }
 
 public class PatientData

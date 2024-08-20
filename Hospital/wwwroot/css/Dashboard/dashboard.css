@@ -23,6 +23,7 @@
     background-color:darkolivegreen;
     border-radius:10px;
     margin-right:10px;
+    cursor:pointer;
 }
 
 .d-card:hover {
@@ -35,4 +36,5 @@
 .card-info{
     display:flex;
     justify-content:center;
+    box-shadow:none;
 }

@@ -1,0 +1,106 @@
+﻿@model Hospital.ViewModels.PatientViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Add Site</h1>
+<hr id="universalHR">
+<br>
+
+@{
+    if (Model.Patient == null)
+    {
+        <h3 class="popup-form-header">New Patient</h3>
+    }
+    else
+    {
+        <h3 class="popup-form-header">Edit Patient</h3>
+    }
+}
+<div class="form">
+    <form asp-action="CreatePatient" asp-controller="Patient" method="post" id="patient-form">
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Patient.PatientID" class="control-label"></label>
+            <input asp-for="Patient.PatientID" class="form-control" />
+            <span asp-validation-for="Patient.PatientID" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Patient.FirstName" class="control-label"></label>
+            <input asp-for="Patient.FirstName" class="form-control" />
+            <span asp-validation-for="Patient.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Patient.MiddleName" class="control-label"></label>
+            <input asp-for="Patient.MiddleName" class="form-control" />
+            <span asp-validation-for="Patient.MiddleName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Patient.LastName" class="control-label"></label>
+            <input asp-for="Patient.LastName" class="form-control" />
+            <span asp-validation-for="Patient.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Patient.Email" class="control-label"></label>
+            <input asp-for="Patient.Email" class="form-control" />
+            <span asp-validation-for="Patient.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Patient.Gender" class="control-label"></label>
+            @foreach (var gender in Enum.GetValues(typeof(Gender)))
+            {
+                <div>
+                    <label>
+                        @Html.RadioButtonFor(m => m.Patient.Gender, gender.ToString()) @gender
+                    </label>
+                </div>
+            }
+
+            <div>
+                <label>
+                    @Html.RadioButtonFor(m => m.Patient.Gender, "Female") Female
+                </label>
+            </div>
+            <div>
+                <label>
+                    @Html.RadioButtonFor(m => m.Patient.Gender, "Other") Other
+                </label>
+            </div>
+            <span asp-validation-for="Patient.Gender" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Patient.GenderOther, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.Patient.GenderOther, new { @class = "form-control", @id = "gender-other" })
+            <span asp-validation-for="Patient.GenderOther" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Patient.Address" class="control-label"></label>
+            <input asp-for="Patient.Address" class="form-control" />
+            <span asp-validation-for="Patient.Address" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Save" onclick="submitForm()" />
+        </div>
+    </form>
+</div>
+<div class="nav-section">
+    <a asp-action="Index" class="btn btn-primary"> Return to Site Register</a>
+</div>
+<script>
+    $(document).readt(function () {
+        toggleGender();
+    });
+
+    function toggleGender(); {
+        var selectedGender = $('input[name="Patient.Gender"]:checked').val();
+        if (selectedGender === "Other") {
+            $('#gender-other').closest('.form-group').show();
+        } else {
+            $('#gender-other').closest('.form-group').hide();
+        }
+    }
+</script>

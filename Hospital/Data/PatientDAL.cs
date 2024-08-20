@@ -38,19 +38,19 @@ namespace Hospital.Data
 
         public List<Patient> GetPatients()
         {
-            return _db.patients.ToList();
+            return _db.patients.Include(p=>p.Appointments).ToList();
 
         }
         public List<Patient> GetMyPatients(string userid)
         {
-            var patients = _db.patients.ToList();
+            var patients = _db.patients.Include(p => p.Appointments).ToList();
 
 
             return _db.patients.ToList();
         }
         public Patient GetPatient(int id)
         {
-            return _db.patients.FirstOrDefault(i => i.ID == id);
+            return _db.patients.Include(p => p.Appointments).FirstOrDefault(i => i.ID == id);
         }
         public List<Appointments> GetAppointments(int id)
         {
@@ -58,21 +58,21 @@ namespace Hospital.Data
         }
 
         public void CreatePatient(Patient patient)
-        {
-            var newPatient = new Patient();
-
-            newPatient = patient;
-
-            _db.patients.Add(newPatient);
+        {         
+            _db.patients.Add(patient);
             _db.SaveChanges();
         }
         public void UpdatePatient(Patient patient)
         {
-
+            var oldPatient = _db.patients.Include(p => p.Appointments).Where(p=>p.ID == patient.ID);
+            _db.Update(patient);
+            _db.SaveChanges();
         }
         public void DeletePatient(int id)
         {
-
+            var patient = _db.patients.Include(p => p.Appointments).Where(p => p.ID == id);
+            _db.Remove(patient);
+            _db.SaveChanges();
         }
 
     }
