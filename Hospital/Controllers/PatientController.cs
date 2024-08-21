@@ -33,10 +33,13 @@ namespace Hospital.Controllers
         }
 
         [HttpGet, ActionName("Create")]
-
         public IActionResult Create()
         {
             var vm = new PatientViewModel();
+            vm.Patient = new Patient
+            {
+                CreationDate = DateTime.Now
+            };
             return View(vm);
         }
 
@@ -46,13 +49,18 @@ namespace Hospital.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (model.Patient != null)
+                if (model.Patient.ID == 0)
                 {
                     _pdal.CreatePatient(model.Patient);
                     return RedirectToAction("Index");
                 }
+                else
+                {
+                    _pdal.UpdatePatient(model.Patient);
+                    return RedirectToAction("Index");
+                }
             }
-            return View("Index",model);
+            return View("Create", model);
         }
 
 
@@ -80,10 +88,17 @@ namespace Hospital.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public ActionResult Edit(PatientViewModel patient)
+        [HttpGet]
+        public ActionResult Edit(int id)
         {
-            _pdal.UpdatePatient(patient.Patient);
-            return View();
+            _pdal.GetPatient(id);
+            var vm = new PatientViewModel()
+            {
+                Patient = _pdal.GetPatient(id)
+            };
+
+
+            return View("Create", vm);
         }
 
         [HttpPost, ActionName("Delete")]

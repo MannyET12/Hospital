@@ -6,12 +6,12 @@
 }
 
 
-<h1>Add Site</h1>
+<h1>Add Patient</h1>
 <hr id="universalHR">
 <br>
 
 @{
-    if (Model.Patient == null)
+    if (Model.Patient.ID == 0)
     {
         <h3 class="popup-form-header">New Patient</h3>
     }
@@ -23,6 +23,9 @@
 <div class="form">
     <form asp-action="CreatePatient" asp-controller="Patient" method="post" id="patient-form">
         @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Patient.CreationDate)
+        @Html.HiddenFor(m => m.Patient.ID)
+
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label asp-for="Patient.PatientID" class="control-label"></label>
@@ -50,6 +53,13 @@
             <span asp-validation-for="Patient.Email" class="text-danger"></span>
         </div>
         <div class="form-group">
+            <label asp-for="Patient.CreationDate" class="control-label"></label>
+            <div class="form-control">
+                @Html.DisplayFor(m => m.Patient.CreationDate)
+            </div>
+            <span asp-validation-for="Patient.CreationDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
             <label asp-for="Patient.Gender" class="control-label"></label>
             @foreach (var gender in Enum.GetValues(typeof(Gender)))
             {
@@ -59,22 +69,11 @@
                     </label>
                 </div>
             }
-
-            <div>
-                <label>
-                    @Html.RadioButtonFor(m => m.Patient.Gender, "Female") Female
-                </label>
-            </div>
-            <div>
-                <label>
-                    @Html.RadioButtonFor(m => m.Patient.Gender, "Other") Other
-                </label>
-            </div>
             <span asp-validation-for="Patient.Gender" class="text-danger"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group" style="display:none;" id="gender-other-group">
             @Html.LabelFor(m => m.Patient.GenderOther, new { @class = "control-label" })
-            @Html.TextBoxFor(m => m.Patient.GenderOther, new { @class = "form-control", @id = "gender-other" })
+            @Html.TextBoxFor(m => m.Patient.GenderOther, new { @class = "form-control", @id = "gender-other"})
             <span asp-validation-for="Patient.GenderOther" class="text-danger"></span>
         </div>
         <div class="form-group">
@@ -82,6 +81,7 @@
             <input asp-for="Patient.Address" class="form-control" />
             <span asp-validation-for="Patient.Address" class="text-danger"></span>
         </div>
+        
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Save" onclick="submitForm()" />
         </div>
@@ -90,17 +90,25 @@
 <div class="nav-section">
     <a asp-action="Index" class="btn btn-primary"> Return to Site Register</a>
 </div>
-<script>
-    $(document).readt(function () {
-        toggleGender();
-    });
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            toggleGenderOther();
 
-    function toggleGender(); {
-        var selectedGender = $('input[name="Patient.Gender"]:checked').val();
-        if (selectedGender === "Other") {
-            $('#gender-other').closest('.form-group').show();
-        } else {
-            $('#gender-other').closest('.form-group').hide();
-        }
-    }
-</script>
+            $('input[name="Patient.Gender"]').change(function () {
+                toggleGenderOther();
+            });
+
+            function toggleGenderOther() {
+                var selectedGender = $('input[name="Patient.Gender"]:checked').val();
+                console.log(selectedGender);
+                if (selectedGender === "Other") {
+                    $('#gender-other').closest('.form-group').show();
+                } else {
+                    $('#gender-other').closest('.form-group').hide();
+                }
+            }
+
+        });
+    </script>
+}

@@ -46,12 +46,16 @@ a.button {
     }
 
 button{
-
+    
 }
 
     button.button:hover {
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow on hover */
     }
+
+button.button{
+    border:none;
+}
 
 .button {
     width: fit-content !important;
@@ -89,11 +93,11 @@ button{
 
 /* table row styles here */
 .table tr:first-child td:first-child  {
-    border-radius: 10px 0px 0px 0px
+    border-radius: 0px 0px 0px 0px
 }
 
 .table tr:first-child td:last-child {
-    border-radius: 0px 10px 0px 0px
+    border-radius: 0px 0px 0px 0px
 }
 
 .table tr:last-child td:first-child  {
@@ -114,3 +118,8 @@ tr:nth-child(even) td {
     color: black; /* Ensure text is visible against the black background */
 }
 
+.actions-container{
+    display:flex;
+    flex-direction:row;
+    gap:5px;
+}

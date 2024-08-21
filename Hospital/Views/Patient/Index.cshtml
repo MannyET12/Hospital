@@ -11,7 +11,6 @@
 <body>
     <div class="patient-header view-header">
         <h3>Patients</h3>
-        <a class="button">Add patient </a>
         <button class="button" type="button" onclick="location.href='@Url.Action("Create", "Patient")'">New Patient</button>
 
     </div>
@@ -27,6 +26,7 @@
                     <th>Email</th>
                     <th>Phone Number</th>
                     <th>Appointments</th>
+                    <th>Actions</th>
                 </tr>
 
             </thead>
@@ -55,10 +55,18 @@
                             <td>@patient.Address</td>
                             <td>@patient.Email</td>
                             <td>@patient.Phone</td>
-                            <td>@patient.Appointments</td>
+                            @if(patient.Appointments.Count == 0)
+                            {
+                                <td>No Appointments</td>
+                            }
+                            else
+                            {
+                                <td>@patient.Appointments</td>
+                            }
                             <td class="actions-container">
-                                <a class="button">Edit</a>
-                                <a class="button">Delete</a>
+                                <a class="button" onclick="location.href='@Url.Action("Edit", "Patient",new {id=patient.ID})'">Edit</a>
+                                <a class="button" onclick="location.href='@Url.Action("Details", "Patient",new {id=patient.ID})'">Details</a>
+                                <a class="button" onclick="location.href='@Url.Action("Delete", "Patient",new {id=patient.ID})'">Delete</a>
                             </td>
                         </tr>
                     }

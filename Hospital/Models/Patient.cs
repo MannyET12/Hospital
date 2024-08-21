@@ -9,7 +9,24 @@ namespace Hospital.Models
         public int ID { get; set; }
         [Display(Name = "Patient ID")]
 
-        public int PatientID { get; set; }
+        public string PatientID
+        {
+            get
+            {
+                if (ID <= 0)
+                {
+                    return "PAT-XXX"; // Temporary placeholder before the entity is saved
+                }
+                else if (ID < 10)
+                {
+                    return "PAT-0" + ID;
+                }
+                else
+                {
+                    return "PAT-" + ID;
+                }
+            }
+        } 
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
@@ -30,18 +47,22 @@ namespace Hospital.Models
         public string Gender { get; set; }
 
         [Display(Name = "Other")]
-        public string GenderOther {  get; set; }
+        public string? GenderOther {  get; set; }
 
         [Display(Name = "Email Address")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         [Display(Name = "Phone Number")]
-        public int Phone { get; set; }      
-        
+        public int Phone { get; set; }
+        [Display(Name = "Creation Date")]
+
+        [Required]
+        public DateTime? CreationDate { get; set; }
+
         [Display(Name = "Appointments")]
-        public List<Appointments> Appointments { get; set; }
+        public List<Appointments> Appointments { get; set; } = new List<Appointments>();
     }
-    
+
     public enum Gender
     {
         Male,

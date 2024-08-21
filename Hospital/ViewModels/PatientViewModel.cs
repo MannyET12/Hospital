@@ -6,10 +6,10 @@ namespace Hospital.ViewModels
 {
     public class PatientViewModel
     {
-        public PatientData PatientData { get; set; }
+        public PatientData? PatientData { get; set; }
         public Patient Patient { get; set; }
-        public List<Patient> Patients { get; set; }
-        public List<Appointments> Appointments { get; set; }
+        public List<Patient>? Patients { get; set; }
+        public List<Appointments>? Appointments { get; set; }
 
     } 
 }
