@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.Design;
 using System.Security.Policy;
 
 namespace Hospital.Models
@@ -58,6 +59,7 @@ namespace Hospital.Models
 
         [Required]
         public DateTime? CreationDate { get; set; }
+       
 
         [Display(Name = "Appointments")]
         public List<Appointments> Appointments { get; set; } = new List<Appointments>();
@@ -68,5 +70,12 @@ namespace Hospital.Models
         Male,
         Female,
         Other
+    }
+
+    public enum Status
+    {
+        Active,
+        Inactive,
+        Deceased
     }
 }

@@ -64,14 +64,13 @@ namespace Hospital.Data
         }
         public void UpdatePatient(Patient patient)
         {
-            var oldPatient = _db.patients.Include(p => p.Appointments).Where(p=>p.ID == patient.ID);
             _db.Update(patient);
             _db.SaveChanges();
         }
         public void DeletePatient(int id)
         {
-            var patient = _db.patients.Include(p => p.Appointments).Where(p => p.ID == id);
-            _db.Remove(patient);
+            var patient = _db.patients.Include(p => p.Appointments).FirstOrDefault(i => i.ID == id);            
+            _db.patients.Remove(patient);
             _db.SaveChanges();
         }
 

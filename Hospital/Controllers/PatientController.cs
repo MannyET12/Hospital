@@ -66,7 +66,6 @@ namespace Hospital.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public ActionResult Save(PatientViewModel patient)
         {
             if (patient == null)
@@ -101,12 +100,11 @@ namespace Hospital.Controllers
             return View("Create", vm);
         }
 
-        [HttpPost, ActionName("Delete")]
         public ActionResult Delete(int id)
         {
 
             _pdal.DeletePatient(id);
-            return View();
+            return RedirectToAction(nameof(Index));
         }
 
 
